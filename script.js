@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const inputField = document.getElementById("inputField");
     const keypadButtons = document.querySelectorAll(".angka, .operator");
-    const clearButton = document.getElementById("clean"); // sesuaikan ID dengan HTML
+    const clearButton = document.getElementById("clean");
     const backspaceButton = document.getElementById("backspace");
     const resultButton = document.getElementById("result");
 
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     keypadButtons.forEach((button) => {
         button.addEventListener("click", function () {
             const value = button.value;
-            inputField.value += value;
+            inputField.value += value; // tambahkan hanya sekali
         });
     });
 
@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event untuk tombol "=" (hasil)
     resultButton.addEventListener("click", function () {
         try {
+            // Gunakan eval untuk menghitung ekspresi (termasuk % sebagai modulo)
             inputField.value = eval(inputField.value);
         } catch (error) {
             inputField.value = "Error";
